@@ -112,7 +112,7 @@ export function AppSidebar() {
         <div className="flex items-center gap-3">
           <motion.div
             whileHover={{ rotate: 5, scale: 1.05 }}
-            className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-white shadow-lg shadow-indigo-500/10"
+            className="flex h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-1.5 shadow-2xl shadow-indigo-500/20 ring-4 ring-white/10"
           >
             <img src="/image.png" alt="Persistent Logo" className="h-full w-full object-contain" />
           </motion.div>
@@ -122,8 +122,8 @@ export function AppSidebar() {
               animate={{ opacity: 1, x: 0 }}
               className="flex flex-col"
             >
-              <span className="text-base font-black tracking-tight text-white leading-tight">Persistent <span className="text-indigo-400">Code Insights</span></span>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Analytics Platform</span>
+              <span className="text-lg font-black tracking-tighter text-white leading-none">PERSISTENT</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-400">CODE INSIGHTS</span>
             </motion.div>
           )}
         </div>

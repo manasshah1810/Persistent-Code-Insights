@@ -261,7 +261,11 @@ export default function AIToolsPage() {
 
                             <div className="flex items-baseline gap-1.5 mb-3">
                                 <span className="text-3xl font-black font-metric" style={{ color: tool.color }}>
-                                    <CountUp end={tool.percentOfAI} decimals={1} duration={1.5} />%
+                                    {(() => {
+                                        const CountUpComponent: any = (CountUp as any).default || CountUp;
+                                        return <CountUpComponent end={tool.percentOfAI} decimals={1} duration={1.5} />;
+                                    })()}
+                                    %
                                 </span>
                                 <span className="text-[10px] font-bold text-slate-400 uppercase">of AI code</span>
                             </div>
