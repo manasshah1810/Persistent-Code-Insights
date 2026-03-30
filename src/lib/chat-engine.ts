@@ -170,8 +170,7 @@ export class ChatEngine {
     }
 
     private async callCompletionEndpoint(prompt: string, maxTokens: number): Promise<string> {
-        const HARDCODED_KEY = "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";
-        const ANTHROPIC_API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY || HARDCODED_KEY;
+        const ANTHROPIC_API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY;
 
         try {
             const response = await fetch("/anthropic-api/messages", {

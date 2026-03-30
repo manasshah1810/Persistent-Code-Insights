@@ -53,8 +53,7 @@ export interface CompletionResponse {
  * Supports Anthropic (via proxy) and OpenRouter
  */
 export async function getAICompletion(prompt: string, maxTokens: number = 300): Promise<string> {
-  const HARDCODED_KEY = "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";
-  const ANTHROPIC_API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY || HARDCODED_KEY;
+  const ANTHROPIC_API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY;
   const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY || "";
 
   try {

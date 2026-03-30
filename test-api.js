@@ -1,4 +1,4 @@
-const API_KEY = "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";
+const API_KEY = process.env.ANTHROPIC_API_KEY;
 
 async function testKey() {
     try {
