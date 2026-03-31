@@ -8,7 +8,7 @@ const PlaceholderIndex = () => {
     <div className="flex min-h-screen items-center justify-center bg-slate-50">
       <div className="flex items-center justify-center gap-4">
         <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg shadow-indigo-500/10">
-          <img src="/image.png" alt="Persistent Logo" className="h-full w-full object-contain" />
+          <img src="/Final Logo.png" alt="Persistent Logo" className="h-full w-full object-contain" />
         </div>
         <div className="text-center">
           <p className="text-xl font-black text-slate-800 tracking-tight">Persistent</p>

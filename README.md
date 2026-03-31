@@ -1,6 +1,6 @@
 # Persistent Code Insights: Enterprise Intelligence Dashboard
 
-![Persistent Logo](/public/image.png)
+![Persistent Logo](/public/Final Logo.png)
 
 ## Overview
 **Persistent Code Insights** is a state-of-the-art Enterprise Intelligence Dashboard designed to provide quantitative insights into AI-assisted software development. The platform bridges the gap between engineering output and AI investment by tracking the lifecycle of AI-generated vs. manually-written code across the entire organization.

@@ -114,7 +114,7 @@ export function AppSidebar() {
             whileHover={{ rotate: 5, scale: 1.05 }}
             className="flex h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-1.5 shadow-2xl shadow-indigo-500/20 ring-4 ring-white/10"
           >
-            <img src="/image.png" alt="Persistent Logo" className="h-full w-full object-contain" />
+            <img src="/Final Logo.png" alt="Persistent Logo" className="h-full w-full object-contain" />
           </motion.div>
           {!isCollapsed && (
             <motion.div
