@@ -1,8 +1,8 @@
 /**
- * Professional PDF Report Generator — Persistent Code Insights
+ * Professional PDF Report Generator — AI Code Insights
  * 
  * Generates branded, structured PDF reports with:
- * - Cover page with SF badge + branding
+ * - Cover page with CI badge + branding
  * - Executive KPIs in formatted cards
  * - Data tables with zebra striping
  * - Inline bar charts rendered via jsPDF primitives
@@ -17,6 +17,7 @@ import {
   teamToolUsage, formatNumber, productivityData, securityData,
   weeklyTrend
 } from "@/data/dashboard-data";
+import { currentBrand } from "./brand-config";
 
 // ─── Brand Colors ──────────────────────────────────────────
 const COLORS = {
@@ -58,7 +59,7 @@ function addFooter(doc: jsPDF, pageNum: number, totalPages: number) {
 
   doc.setFontSize(7);
   doc.setTextColor(...COLORS.textLight);
-  doc.text("Persistent Code Insights  •  Analytics Pro", PAGE.marginLeft, y);
+  doc.text(`${currentBrand.name}  •  Analytics Pro`, PAGE.marginLeft, y);
   doc.text(`Generated: ${new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" })}`, PAGE.marginLeft, y + 10);
   doc.text(`Page ${pageNum} of ${totalPages}`, PAGE.width - PAGE.marginRight, y, { align: "right" } as any);
   doc.text("CONFIDENTIAL", PAGE.width - PAGE.marginRight, y + 10, { align: "right" } as any);
@@ -194,19 +195,23 @@ function drawCoverPage(doc: jsPDF, role: UserRole, subtitle: string) {
 
   // Logo Rendering
   const logoY = 240;
-  // Use SF badge instead of image logo
+  // Use badge for logo
   doc.setFillColor(...COLORS.primary);
   doc.circle(PAGE.width / 2, logoY, 40, "F");
   doc.setFontSize(32);
   doc.setTextColor(...COLORS.white);
   doc.setFont("helvetica", "bold");
-  doc.text("PCI", PAGE.width / 2, logoY + 11, { align: "center" } as any);
+
+  // If we have a text logo, use it, otherwise use first 3 chars or placeholder
+  const isImageLogo = currentBrand.logo.includes('.');
+  const logoText = isImageLogo ? currentBrand.name.substring(0, 3).toUpperCase() : currentBrand.logo;
+  doc.text(logoText, PAGE.width / 2, logoY + 11, { align: "center" } as any);
 
   // Brand Name
   doc.setFontSize(36);
   doc.setTextColor(...COLORS.white);
   doc.setFont("helvetica", "bold");
-  doc.text("Persistent Code Insights", PAGE.width / 2, logoY + 80, { align: "center" } as any);
+  doc.text(currentBrand.name, PAGE.width / 2, logoY + 80, { align: "center" } as any);
 
   // Subtitle
   doc.setFontSize(12);
@@ -637,7 +642,7 @@ export async function exportReport(
   // ─── Save ───
   const timestamp = new Date().toISOString().slice(0, 10);
   const roleName = role.toLowerCase();
-  doc.save(`persistent-code-insights-${roleName}-report-${timestamp}.pdf`);
+  doc.save(`ai-code-insights-${roleName}-report-${timestamp}.pdf`);
 }
 
 /**

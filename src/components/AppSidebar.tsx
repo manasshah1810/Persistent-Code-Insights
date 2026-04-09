@@ -61,12 +61,16 @@ const developerNavItems = [
   { title: "Glossary", url: "/glossary", icon: BookOpen },
 ];
 
+import { currentBrand } from "@/lib/brand-config";
+
 export function AppSidebar() {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
   const location = useLocation();
   const { currentRole, developerUserId, managerUserId, theme } = useAppStore();
   const isDark = theme === 'dark';
+
+  const isImageLogo = currentBrand.logo.includes('.');
 
   // Choose nav items based on role
   const navItems = currentRole === "Developer"
@@ -125,30 +129,47 @@ export function AppSidebar() {
     >
       <SidebarHeader className="p-6">
         <div className="flex items-center gap-3">
-          <motion.div
-            whileHover={{ rotate: 5, scale: 1.05 }}
-            className={cn(
-              "flex h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white p-1.5 shadow-2xl ring-4",
-              isDark ? "shadow-indigo-500/20 ring-white/10" : "shadow-indigo-300/40 ring-indigo-100"
-            )}
-          >
-            <img src="/Final Logo.png" alt="Persistent Logo" className="h-full w-full object-contain" />
-          </motion.div>
           {!isCollapsed && (
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               className="flex flex-col"
             >
-              <span className={cn(
-                "text-lg font-black tracking-tighter leading-none",
-                isDark ? "text-white" : "text-indigo-900"
-              )}>PERSISTENT</span>
-              <span className={cn(
-                "text-[10px] font-bold uppercase tracking-[0.2em]",
-                isDark ? "text-indigo-400" : "text-indigo-500"
-              )}>CODE INSIGHTS</span>
+              <div className="flex items-center gap-2">
+                <div className={cn(
+                  "h-8 w-8 rounded-lg flex items-center justify-center font-black text-white text-lg overflow-hidden",
+                  !isImageLogo && "bg-gradient-to-tr from-indigo-600 to-purple-600 shadow-lg shadow-indigo-500/20"
+                )}>
+                  {isImageLogo ? (
+                    <img src={currentBrand.logo} alt={currentBrand.name} className="h-full w-full object-contain" />
+                  ) : (
+                    currentBrand.logo
+                  )}
+                </div>
+                <div className="flex flex-col">
+                  <span className={cn(
+                    "text-lg font-black tracking-tighter leading-none shrink-0 whitespace-nowrap",
+                    isDark ? "text-white" : "text-indigo-900"
+                  )}>{currentBrand.name.split(' ')[0]}</span>
+                  <span className={cn(
+                    "text-[10px] font-bold uppercase tracking-[0.1em] whitespace-nowrap",
+                    isDark ? "text-indigo-400" : "text-indigo-500"
+                  )}>{currentBrand.name.split(' ').slice(1).join(' ')}</span>
+                </div>
+              </div>
             </motion.div>
+          )}
+          {isCollapsed && (
+            <div className={cn(
+              "h-8 w-8 rounded-lg flex items-center justify-center font-black text-white text-xs overflow-hidden",
+              !isImageLogo && "bg-gradient-to-tr from-indigo-600 to-purple-600 shadow-lg shadow-indigo-500/20"
+            )}>
+              {isImageLogo ? (
+                <img src={currentBrand.logo} alt={currentBrand.name} className="h-full w-full object-contain" />
+              ) : (
+                currentBrand.logo
+              )}
+            </div>
           )}
         </div>
       </SidebarHeader>

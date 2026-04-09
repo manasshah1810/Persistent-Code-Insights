@@ -75,7 +75,7 @@ export const useAppStore = create<AppState>()(
       clearLiveEvents: () => set({ liveEvents: [] }),
     }),
     {
-      name: "persistent-app-store", // localStorage key
+      name: "ai-code-insights-store", // localStorage key
       partialize: (state) => ({
         // Only persist these fields to localStorage
         currentRole: state.currentRole,
