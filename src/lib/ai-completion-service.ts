@@ -69,7 +69,7 @@ export async function getAICompletion(prompt: string, maxTokens: number = 300): 
             "anthropic-dangerous-direct-browser-access": "true",
           },
           body: JSON.stringify({
-            model: "claude-sonnet-4-6",
+            model: "claude-3-5-sonnet-20241022",
             max_tokens: maxTokens,
             messages: [{ role: "user", content: prompt }],
             temperature: 0.7,
@@ -98,7 +98,7 @@ export async function getAICompletion(prompt: string, maxTokens: number = 300): 
           "X-OpenRouter-Title": "AI Code Insights",
         },
         body: JSON.stringify({
-          model: "claude-sonnet-4-6",
+          model: "claude-3-5-sonnet-20241022",
           messages: [{ role: "user", content: prompt }],
           max_tokens: maxTokens,
           temperature: 0.7,

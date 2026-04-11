@@ -119,7 +119,7 @@ DEVELOPER DATA (Personal View — ${user.name}):
 function buildSystemPrompt(role: UserRole, dataContext: string): string {
     const roleLabel = role === "Admin" ? "organization-wide admin" : role === "Manager" ? "team manager" : "individual developer";
 
-    return `You are AI Code Insights Assistant, powered exclusively by Anthropic Claude Sonnet 4.6. You analyze engineering metrics from the AI Code Insights dashboard.
+    return `You are AI Code Insights Assistant, powered exclusively by Anthropic Claude 3.5 Sonnet. You analyze engineering metrics from the AI Code Insights dashboard.
 
 USER ROLE: ${roleLabel}
 
@@ -146,7 +146,7 @@ export class ChatEngine {
 
     constructor(
         baseUrl = "https://openrouter.ai/api/v1/chat/completions",
-        model = "claude-sonnet-4-6"
+        model = "claude-3-5-sonnet-20241022"
     ) {
         this.baseUrl = baseUrl;
         this.model = model;
@@ -182,7 +182,7 @@ export class ChatEngine {
                     "anthropic-dangerous-direct-browser-access": "true",
                 },
                 body: JSON.stringify({
-                    model: "claude-sonnet-4-6",
+                    model: "claude-3-5-sonnet-20241022",
                     max_tokens: maxTokens,
                     messages: [{ role: "user", content: prompt }],
                     temperature: 0.2,

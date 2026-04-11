@@ -8,7 +8,7 @@ export const BRAND_CONFIG = {
         logo: "ACI",
     },
     persistent: {
-        name: "persistent AI-Code-Insights",
+        name: "Persistent AI-Code-Insights",
         logo: "/persistent-logo.png",
     },
     cogniify: {
